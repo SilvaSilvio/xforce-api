@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +57,13 @@ public class CategoriaResource {
 	public ResponseEntity<CategoriaDTO> updateCategoria(@PathVariable Integer id, @RequestBody CategoriaDTO objDTO){
 		Categoria categ = categoriaService.updateCategoria(id, objDTO);
 		return ResponseEntity.ok().body(new CategoriaDTO(categ));
+	}
+	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> deleteCategoria(@PathVariable Integer id) {
+		categoriaService.deleteCategoria(id);
+		return ResponseEntity.noContent().build();
+		
 	}
 	
 	

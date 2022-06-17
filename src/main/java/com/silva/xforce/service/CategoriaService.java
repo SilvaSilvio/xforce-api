@@ -40,6 +40,13 @@ public class CategoriaService {
 		obj.setDescricao(objDto.getDescricao());
 		return categoriaRepository.save(obj);
 	}
+
+	//Metodo que delete um registro da entidade categoria passado o id..
+	public void deleteCategoria(Integer id) {
+		findById(id);
+		categoriaRepository.deleteById(id);
+		
+	}
 	
 
 }
